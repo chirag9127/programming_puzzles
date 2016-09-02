@@ -1,5 +1,4 @@
-S = [-1, 0, 1, 2, -1, -4]
-output = []
+import pytest
 
 
 def is_odd(num):
@@ -9,6 +8,10 @@ def is_odd(num):
 
 
 def find_3sums(arr):
+    """
+    O(n^2) algorithm to reduce the search space to find the 3 sum
+    """
+    output = []
     count = 0
     sorted_array = sorted(arr)
     i = 0
@@ -29,19 +32,15 @@ def find_3sums(arr):
         else:
             j -= 1
         count += 1
-
-
-def find_3sums_dict(arr):
-    values = set()
-    for item in arr:
-        values.add(item)
-    for i in range(len(arr)):
-        for j in range(i, len(arr)):
-            if -(arr[i] + arr[j]) in values:
-                output.append([arr[i], arr[j], -(arr[i] + arr[j])])
+    return output
 
 
 def find_3sums_alternate(arr):
+    """
+    O(n^2) algorithm to reduce the search space to find the 3 sum. This does
+    it more efficiently than the above algorithm.
+    """
+    output = []
     arr = sorted(arr)
     for i in range(len(arr) - 2):
         if arr[i] == arr[i - 1]:
@@ -60,7 +59,11 @@ def find_3sums_alternate(arr):
                 end -= 1
             else:
                 start += 1
+    return output
 
 
-find_3sums_alternate(S)
-print output
+@pytest.mark.parametrize("input_array,expected_output", [
+    ([-1, 0, 1, 2, -1, -4], [[-1, -1, 2], [-1, 0, 1]])
+])
+def test_3sum(input_array, expected_output):
+    assert find_3sums_alternate(input_array) == expected_output
