@@ -67,4 +67,4 @@ def test_is_palindrome(word, palindrome):
     assert is_palindrome(word) == palindrome
 
 
-print palindrome_pairs(["abcd", "dcba", "lls", "s", "sssll"])
+print (palindrome_pairs(["abcd", "dcba", "lls", "s", "sssll"]))

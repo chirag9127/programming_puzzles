@@ -33,3 +33,6 @@ def edit_distance(word1, word2):
 ])
 def test_edit_distance(word1, word2, expected_output):
     assert edit_distance(word1, word2) == expected_output
+
+
+print(edit_distance("extra", "zebra"))
