@@ -15,7 +15,7 @@ def test_general_abbrev(word, output):
 def general_abbrev(word):
     output = permutations(word)
 
-    print(output)
+    return output
 
 
 def permutations(word):
