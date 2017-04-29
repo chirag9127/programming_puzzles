@@ -31,3 +31,14 @@ def custom_sort(enum, smaller):
             else:
                 enum[i] = right.pop()
     return enum
+
+
+class BinaryIndexedTree(object):
+
+    def __init__(self, n):
+        self.sums = [0] * (n + 1)
+
+    def update(self, i, val):
+        while i < len(self.sums):
+            self.sums[i] += 1
+            i += i & -i
